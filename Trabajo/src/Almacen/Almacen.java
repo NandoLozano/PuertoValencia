@@ -35,12 +35,19 @@ public class Almacen extends JFrame{
     private JLabel prioridadlabel;
     private JLabel aduanalabel;
     private JTextField desapilartxt;
+    private JRadioButton prioridad1;
+    private JRadioButton prioridad2;
+    private JRadioButton prioridad3;
+    private JCheckBox caduana;
+    private JTextArea areamostrar;
+    private JTextArea Areaid;
+    private JTextArea areap;
 
     private HubContenedores h;
 
    public Almacen(){
        setTitle("Hub de contenedores");
-       setSize(800,600);
+       setSize(800,800);
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        setVisible(true);
        setContentPane(Almacen);
@@ -60,8 +67,13 @@ public class Almacen extends JFrame{
                int id=Integer.parseInt(idtxt.getText());
                float peso=Float.parseFloat(pesotxt.getText());
                String pais=paistxt.getText();
-               boolean aduana=Boolean.parseBoolean(aduanatxt.getText());
-               int prioridad=Integer.parseInt(prioridadtxt.getText());
+               boolean aduana= false;
+               if(caduana.isSelected())
+                   aduana=true;     //Boolean.parseBoolean(aduanatxt.getText());
+               int prioridad=3;
+               if (prioridad1.isSelected()) prioridad=1;
+               else if (prioridad2.isSelected()) prioridad=2;
+               //si no se marca asumimos que el valor es 3
                String descripcion=descripciontxt.getText();
                String envia=enviatxt.getText();
                String recibe=recibetxt.getText();
@@ -81,7 +93,7 @@ public class Almacen extends JFrame{
            @Override
            public void actionPerformed(ActionEvent e) {
                if(h!=null){
-                   mostrartxt.setText(h.toString());
+                   areamostrar.setText(h.toString());
 
 
                }
@@ -92,7 +104,7 @@ public class Almacen extends JFrame{
            public void actionPerformed(ActionEvent e) {
                if(h!=null) {
                    int id = Integer.parseInt(entraridtxt.getText());
-                   saliridtxt.setText(h.mostrarporid(id));
+                   Areaid.setText(h.mostrarporid(id));
                }
 
 
@@ -104,7 +116,7 @@ public class Almacen extends JFrame{
 
                if(h!=null) {
                    String pais = entradaptxt.getText();
-                   salirptxt.setText(h.unPais(pais));
+                   areap.setText(h.unPais(pais));
                }
 
            }

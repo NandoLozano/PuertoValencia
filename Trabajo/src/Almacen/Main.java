@@ -5,6 +5,12 @@ public class Main {
         HubContenedores cont=new HubContenedores();
         Contenedor c=new Contenedor(3,120,"españa",true,3,"especial","alonso","maria");
         cont.apilarcontenedor(c);
+        Contenedor c1=new Contenedor(4,120,"españa",true,3,"especial","alonso","maria");
+        System.out.println(cont);
+        for (int i = 0; i < 11; i++) {
+            cont.apilarcontenedor(c1);
+        }
+
         cont.desapilar(3);
         //System.out.println(c);
         //System.out.println(cont.unPais("españa"));
